@@ -7,9 +7,9 @@ module.exports = () => {
  return {
   mode: "development",
   entry: {
-   main: "./src/js/index.js",
-   install: "./src/js/install.js",
-  },
+    main: "./client/js/index.js",      // Update the path to client-side entry file
+    install: "./client/js/install.js", // Update the path to client-side entry file
+   },
   output: {
    filename: "[name].bundle.js",
    path: path.resolve(__dirname, "dist"),
@@ -17,7 +17,7 @@ module.exports = () => {
   plugins: [
    // HtmlWebpackPlugin to generate HTML files
    new HtmlWebpackPlugin({
-    template: "./src/index.html",
+    template: "./index.html",
     filename: "index.html",
    }),
 
@@ -38,7 +38,7 @@ module.exports = () => {
 
    // InjectManifest to inject the service worker
    new InjectManifest({
-    swSrc: "./src/service-worker.js",
+    swSrc: "./client/src/service-worker.js",
    }),
   ],
 
