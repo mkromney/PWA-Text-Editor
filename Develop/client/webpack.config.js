@@ -7,21 +7,21 @@ module.exports = () => {
  return {
   mode: "development",
   entry: {
-    main: "./client/js/index.js",      // Update the path to client-side entry file
-    install: "./client/js/install.js", // Update the path to client-side entry file
-   },
+    main: "./src/js/index.js",      
+    install: "./src/js/install.js",
+  },
   output: {
    filename: "[name].bundle.js",
    path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-   // HtmlWebpackPlugin to generate HTML files
+   // Generates HTML files
    new HtmlWebpackPlugin({
     template: "./index.html",
     filename: "index.html",
    }),
 
-   // WebpackPwaManifest to generate a manifest file
+   // Generates a manifest file
    new WebpackPwaManifest({
     name: "My App",
     short_name: "App",
@@ -30,7 +30,8 @@ module.exports = () => {
     theme_color: "#000000",
     icons: [
      {
-      src: path.resolve("src/assets/icon.png"),
+      src: path.resolve("src/images/logo.png"),
+      // loads only six size versions of the .png.
       sizes: [96, 128, 192, 256, 384, 512],
      },
     ],
@@ -38,7 +39,7 @@ module.exports = () => {
 
    // InjectManifest to inject the service worker
    new InjectManifest({
-    swSrc: "./client/src/service-worker.js",
+    swSrc: "./src-sw.js",
    }),
   ],
 
